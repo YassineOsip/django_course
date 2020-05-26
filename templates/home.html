@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/bulma-0.8.2/css/bulma.min.css">
     <link rel="stylesheet" href="../static/css/home.css">
-    <title>Document</title>
+    <title>Instagram Viewer</title>
 </head>
 <body>
     <section class="hero is-black is-fullheight">
@@ -27,13 +27,13 @@
                     <div class="navbar-start">
                         <div class="field">
                             <div class="control">
-                                <form action="">
+                                <form method="POST">
                                     <div class="field has-addons">
                                         <div class="control">
-                                            <input class="input is-primary is-small" type="text" placeholder="Primary input">
+                                            <input class="input is-primary is-small" type="text" placeholder="Primary input" name="username">
                                         </div>
                                         <div class="control">
-                                            <button class="button is-primary is-outlined is-small">Search</button>
+                                            <button class="button is-primary is-outlined is-small" >Search</button>
                                         </div>
                                       </div>
                                 </form>
@@ -56,18 +56,27 @@
                 </div>
               </nav>
         </div>
-        
+        {% if data == {} %}
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <p class="title">
+                    Try To Search For An Instagram User...
+                </p>
+            </div>
+        </div>
+
+        {% else %}
         <div class="hero-body">
           <div class="container has-text-centered">
             <figure class="image is-128x128">
-                <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                <img class="is-rounded" src="{{ data['img']}}">
             </figure>
 
             <p class="title">
-                Full Name
+                {{data['fullName']}}
             </p>
             <p class="subtitle">
-                Descreption
+                {{data['description']}}
             </p>
 
             <button class="button is-primary is-outlined is-small">
@@ -81,26 +90,27 @@
                 <nav class="level">
                     <div class="level-item has-text-centered">
                       <div>
-                        <p class="heading">Tweets</p>
-                        <p class="title">3,456</p>
+                        <p class="heading">Posts</p>
+                        <p class="title">{{data['posts']}}</p>
                       </div>
                     </div>
                     <div class="level-item has-text-centered">
                       <div>
-                        <p class="heading">Following</p>
-                        <p class="title">123</p>
+                        <p class="heading">Followers</p>
+                        <p class="title">{{data['followers']}}</p>
                       </div>
                     </div>
 
                     <div class="level-item has-text-centered">
                       <div>
-                        <p class="heading">Likes</p>
-                        <p class="title">789</p>
+                        <p class="heading">Following</p>
+                        <p class="title">{{data['following']}}</p>
                       </div>
                     </div>
                   </nav>
             </div>
         </div>
+        {% endif %}
       </section>
 </body>
 </html>
