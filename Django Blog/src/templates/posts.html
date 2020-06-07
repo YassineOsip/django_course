@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <title>Posts</title>
+</head>
+<body>
+    <div class="flex bg-gray-200">
+        <div class="flex-1 text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"><a href="{% url 'home:home' %}">Home</a> </div>
+        <div class="flex-1 text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"><a href="{% url 'posts:posts' %}">Posts</a></div>
+    </div>
+    <div class="container">
+        <div class="grid gap-4 grid-cols-3">
+        {% for post in posts %}        
+            <div class="max-w-sm w-full lg:max-w-full lg:flex mx-2 my-4">
+                <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden" style="background-image: url('{{ post.img.url }}')" title="Woman holding a mug">
+                </div>
+                <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+                  <div class="mb-8">
+                    <p class="text-sm text-gray-600 flex items-center">
+                      <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
+                      </svg>
+                      public to all
+                    </p>
+                    <div class="text-gray-900 font-bold text-xl mb-2">{{post.title}}</div>
+                    <p class="text-gray-700 text-base">{{post.content}}</p>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="text-sm">
+                      <p class="text-gray-600">{{post.publishedAt}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        {% endfor %}
+        </div>
+        
+    </div>
+</body>
+</html>

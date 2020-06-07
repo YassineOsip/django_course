@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <title>Home</title>
+</head>
+<body>
+    <div class="flex bg-gray-200">
+        <div class="flex-1 text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"><a href="{% url 'home:home' %}">Home</a> </div>
+        <div class="flex-1 text-gray-700 text-center bg-gray-400 px-4 py-2 m-2"><a href="{% url 'posts:posts' %}">Posts</a></div>
+    </div>
+    <div class="container">
+        <div class="grid gap-4 grid-cols-3">
+            <!-- ... -->
+          </div>
+    </div>
+</body>
+</html>

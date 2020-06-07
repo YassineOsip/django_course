@@ -1,4 +1,4 @@
-from flask import Flask , render_template , request , redirect
+from flask import Flask , render_template , request
 app = Flask(__name__)
 app.config["DEBUG"] = True
 import instagram_engine 
